@@ -1,0 +1,6 @@
+This directory contains an uniforming layer for multiprocessing in the
+style supported by Allegro Common Lisp and CMUCL.  Almost nothing of
+this has been written by me.  It's mostly the work of Gilbert Baumann
+(unk6@rz.uni-karlsruhe.de) and I've shamelessly lifted it from McCLIM.
+The copyright disclaimer in this code is compatible with the one of
+SCLF, so I believe there should be no legal issues.
