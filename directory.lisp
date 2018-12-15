@@ -345,21 +345,18 @@ are defined."
 			   :gid gid
 			   :mode mode))))
 
+(defconstant +unix-to-universal-time+
+  #.(encode-universal-time 0 0 0 1 1 1970 0))
+
 (defun stat-modification-time (stat)
   "Return the modification time of the STAT structure as Lisp
 Universal Time, which is not the same as the Unix time."
-  #-(or cmu sbcl) (error "Don't know how to adjust Unix time to Lisp Universal Time.")
-  (+ #+cmu lisp::unix-to-universal-time
-     #+sbcl sb-impl::unix-to-universal-time
-     (stat-mtime stat)))
+  (+ +unix-to-universal-time+ (stat-mtime stat)))
 
 (defun stat-creation-time (stat)
   "Return the creation time of the STAT structure as Lisp
 Universal Time, which is not the same as the Unix time."
-  #-(or cmu sbcl) (error "Don't know how to adjust Unix time to Lisp Universal Time.")
-  (+ #+cmu lisp::unix-to-universal-time
-     #+sbcl sb-impl::unix-to-universal-time
-     (stat-ctime stat)))
+  (+ +unix-to-universal-time+ (stat-ctime stat)))
 
 (defun file-modification-time (file)
   "Return the modification time of FILE as Lisp Universal Time, which
